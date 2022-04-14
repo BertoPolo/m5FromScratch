@@ -1,8 +1,9 @@
-import { fileUrlToPath } from "url"
+import { fileURLToPath } from "url"
 import { dirname, join } from "path"
+import fs from "fs-extra"
 
-const moviesJSONPath = join(dirname(fileUrlToPath(import.meta.url)), "movies.json")
+const dataFolderPath = join(dirname(fileURLToPath(import.meta.url)), ".../data")
+const moviesJSONPath = join(dataFolderPath, "movies.json")
 
-const readMovies = JSON.parse(fs.readFile(moviesJSONPath).toString())
-
-const writeMovies = fs.writeFile(moviesJSONPath, JSON.stringify())
+export const readMovies = () => readJSON(moviesJSONPath)
+export const writeMovies = (content) => writeJSON(moviesJSONPath, content)
