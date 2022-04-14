@@ -30,7 +30,7 @@ export const notFoundErr = (err, req, res, next) => {
   }
 }
 
-export const genericError = (err, req, res, next) => {
+export const genericErr = (err, req, res, next) => {
   console.log(err)
   res.status(500).send({ message: "GENERIC Server Error" })
 }
