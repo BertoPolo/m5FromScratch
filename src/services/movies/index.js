@@ -66,12 +66,10 @@ moviesRouter.put("/media/:imdbID", async (req, res, next) => {
     const moviesArray = await readMovies()
 
     const foundedMovie = moviesArray.find((movie) => movie.imdbID === req.params.imdbID)
-    //writeMovie, add req.body,add updatedAt
     const newMovieArray = { ...foundedMovie, ...req.body, updatedAt: new Date() }
 
-    moviesArray.push(newMovieArray)
-
-    await writeMovies(moviesArray)
+    // select the foundedmovie ,merge to movies-(writeMovies)
+    await writeMovies()
 
     res.status(200).send(newMovieArray)
   } catch (error) {
