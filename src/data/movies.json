@@ -19,5 +19,26 @@
     "imdbID": "tt0120asd737",
     "Type": "movie",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg"
+  },
+  {
+    "Title": "Harry Potter and the Chamber of Secrets",
+    "Year": "2002",
+    "Type": "movie",
+    "Poster": "https://bit.ly/31gVxzb",
+    "imdbID": "55pfq9dcl1yzwqm6"
+  },
+  {
+    "Title": "Harry Potter and the Prisoner of Azkaban",
+    "Year": "2004",
+    "Type": "movie",
+    "Poster": "https://bit.ly/2QzHt1n",
+    "imdbID": "55pfqbvcl1yzyn5w"
+  },
+  {
+    "Title": "Harry Potter Azkaban",
+    "Year": "2007",
+    "Type": "movie",
+    "Poster": "https://bit.ly/2QzHt1n",
+    "imdbID": "55pfqbvcl1yzzxd4"
   }
 ]

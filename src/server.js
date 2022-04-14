@@ -13,8 +13,12 @@ server.use(cors())
 server.use(express.json())
 //
 server.use("/movies", moviesRouter)
+server.on("error", (err) => {
+  console.log(err)
+})
 
 server.listen(port, () => {
-  console.table(listEndpoints)
+  console.table(listEndpoints(server))
   console.log("server is running on port nº : ", port)
 })
+//
