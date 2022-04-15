@@ -11,7 +11,8 @@
     "Year": "2201",
     "imdbID": "tt01207aaa137",
     "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg"
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
+    "updatedAt": "2022-04-15T12:29:45.300Z"
   },
   {
     "Title": "The Lord of trolls",
@@ -34,13 +35,7 @@
     "Poster": "https://bit.ly/2QzHt1n",
     "imdbID": "55pfqbvcl1yzyn5w"
   },
-  {
-    "Title": "Harry Potter Azkaban",
-    "Year": "2007",
-    "Type": "movie",
-    "Poster": "https://bit.ly/2QzHt1n",
-    "imdbID": "55pfqbvcl1yzzxd4"
-  },
+  { "Title": "Harry Potter Azkaban", "Year": "2007", "Type": "movie", "Poster": "https://bit.ly/2QzHt1n", "imdbID": "55pfqbvcl1yzzxd4" },
   {
     "Title": "The Lord of trolls",
     "Year": "20112",

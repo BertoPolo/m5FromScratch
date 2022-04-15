@@ -26,6 +26,16 @@ moviesRouter.post("/media", async (req, res, next) => {
   }
 })
 
+//////POST Poster to single media
+
+moviesRouter.post("/", async (req, res, next) => {
+  try {
+    const moviesArray = await readMovies()
+  } catch (error) {
+    next(error)
+  }
+})
+
 ///// GET Media (list) (reviews included)
 moviesRouter.get("/media", async (req, res, next) => {
   try {
@@ -44,7 +54,7 @@ moviesRouter.get("/media", async (req, res, next) => {
   }
 })
 
-///////GET Media (single) (with reviews
+///////GET Media (single) (with reviews)
 moviesRouter.get("/media/:imdbID", async (req, res, next) => {
   try {
     const moviesArray = await readMovies()
@@ -65,11 +75,13 @@ moviesRouter.put("/media/:imdbID", async (req, res, next) => {
   try {
     const moviesArray = await readMovies()
 
-    const foundedMovie = moviesArray.find((movie) => movie.imdbID === req.params.imdbID)
-    const newMovieArray = { ...foundedMovie, ...req.body, updatedAt: new Date() }
+    const index = moviesArray.findIndex((movie) => movie.imdbID === req.params.imdbID)
 
-    // select the foundedmovie ,merge to movies-(writeMovies)
-    await writeMovies()
+    const newMovieArray = { ...moviesArray[index], ...req.body, updatedAt: new Date() }
+
+    moviesArray[index] = newMovieArray
+
+    await writeMovies(moviesArray)
 
     res.status(200).send(newMovieArray)
   } catch (error) {
@@ -79,6 +91,14 @@ moviesRouter.put("/media/:imdbID", async (req, res, next) => {
 
 ////////DELETE Media
 moviesRouter.delete("/media/:imdbID", async (req, res, next) => {
+  const moviesArray = await readMovies()
+
+  const remainingMovies = moviesArray.filter((movie) => movie.imdbID !== req.params.imdbID)
+
+  await writeMovies(remainingMovies)
+
+  res.status(200).send("Deleted!")
+
   try {
   } catch (error) {
     next(error)
