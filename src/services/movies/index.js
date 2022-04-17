@@ -1,9 +1,9 @@
 // import { fs } from "fs-extra"
 // import createError from "http-errors"
-// import multer from "multer"
+import multer from "multer"
 import uniqid from "uniqid"
 import express from "express"
-import { readMovies, writeMovies, readMoviesReviews, writeMoviesReviews } from "../../lib/fs-tools.js"
+import { readMovies, writeMovies, readMoviesReviews, writeMoviesReviews, savePosters } from "../../lib/fs-tools.js"
 
 const moviesRouter = express.Router()
 
@@ -28,9 +28,11 @@ moviesRouter.post("/media", async (req, res, next) => {
 
 //////POST Poster to single media
 
-moviesRouter.post("/", async (req, res, next) => {
+moviesRouter.post("/media/:imdbID", multer().single("poster"), async (req, res, next) => {
   try {
-    const moviesArray = await readMovies()
+    //the function in fs-tools to save img's in PUBLIC . remember to do PUBLIC's stuff
+    savePosters(`${params.imdbID}.jpg`, req.file.buffer)
+    res.status(201).send("poster posted")
   } catch (error) {
     next(error)
   }
