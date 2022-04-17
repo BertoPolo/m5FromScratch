@@ -43,12 +43,13 @@ moviesRouter.post("/media/:imdbID/reviews", async (req, res, next) => {
   try {
     let moviesReviewsArray = await readMoviesReviews()
 
-    // const moviesArray = await readMovies()
-    // const index = moviesArray.findIndex((element) => element.elementId === req.params.imdbID)
+    const id = uniqid()
+    const elementId = req.params.imdbID
+    const body = req.body
 
-    const newReview = { ...moviesReviewsArray, ...req.body, _id: uniqid(), elementId: req.params.imdbID }
+    const newReview = { ...moviesReviewsArray, body, id, elementId }
 
-    moviesReviewsArray = { ...moviesReviewsArray, ...newReview }
+    moviesReviewsArray.push(newReview)
 
     writeMoviesReviews(moviesReviewsArray)
 
