@@ -38,6 +38,26 @@ moviesRouter.post("/media/:imdbID", multer().single("poster"), async (req, res, 
   }
 })
 
+//////////POST Review to media ( /media/:id/reviews)
+moviesRouter.post("/media/:imdbID/reviews", async (req, res, next) => {
+  try {
+    let moviesReviewsArray = await readMoviesReviews()
+
+    // const moviesArray = await readMovies()
+    // const index = moviesArray.findIndex((element) => element.elementId === req.params.imdbID)
+
+    const newReview = { ...moviesReviewsArray, ...req.body, _id: uniqid(), elementId: req.params.imdbID }
+
+    moviesReviewsArray = { ...moviesReviewsArray, ...newReview }
+
+    writeMoviesReviews(moviesReviewsArray)
+
+    res.status(201).send("review posted")
+  } catch (error) {
+    next(error)
+  }
+})
+
 ///// GET Media (list) (reviews included)
 moviesRouter.get("/media", async (req, res, next) => {
   try {
