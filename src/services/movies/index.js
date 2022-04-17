@@ -127,5 +127,20 @@ moviesRouter.delete("/media/:imdbID", async (req, res, next) => {
     next(error)
   }
 })
-/////////
+/////////DELETE Review of media
+moviesRouter.delete("/media/:imdbID/reviews", async (req, res, next) => {
+  try {
+    const reviews = await readMoviesReviews()
+
+    const remainingReviews = reviews.filter((review) => review.elementId !== req.params.imdbID)
+
+    writeMoviesReviews(remainingReviews)
+
+    res.status(200).send("Deleted")
+  } catch (error) {
+    next(error)
+  }
+})
+//////
+
 export default moviesRouter
